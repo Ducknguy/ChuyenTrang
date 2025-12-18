@@ -1,48 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Đang chuyển hướng đến tải game...</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript">
-        function redirect() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  <title>Đang chuyển hướng đến tải game...</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            // Link của bạn
-            var androidLink = "https://play.google.com/store/apps/details?id=com.kcgames.trauphuot&hl=vi";
-            var iosLink = "https://apps.apple.com/vn/app/tr%C3%A2u-ph%C6%B0%E1%BB%A3t/id6755519358?l=vi";
-            var fallbackLink = "https://kcgames.vn"; // Link dự phòng cho PC
+  <!-- Vercel Web Analytics (Insights) -->
+  <script defer src="/_vercel/insights/script.js"></script>
 
-            // Phát hiện thiết bị
-            if (/android/i.test(userAgent)) {
-                window.location.href = androidLink;
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = iosLink;
-            } else {
-                // Nếu là máy tính (PC/Laptop), chuyển về trang chủ
-                window.location.href = fallbackLink;
-            }
-        }
-        
-        // Thực hiện chuyển hướng ngay khi tải trang
-        window.onload = redirect;
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    function redirect() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      var androidLink = "https://play.google.com/store/apps/details?id=com.kcgames.trauphuot&hl=vi";
+      var iosLink = "https://apps.apple.com/vn/app/tr%C3%A2u-ph%C6%B0%E1%BB%A3t/id6755519358?l=vi";
+      var fallbackLink = "https://kcgames.vn";
+
+      if (/android/i.test(userAgent)) {
+        window.location.href = androidLink;
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.location.href = iosLink;
+      } else {
+        window.location.href = fallbackLink;
+      }
+    }
+
+    // Delay nhẹ để analytics kịp ping
+    window.addEventListener("load", () => setTimeout(redirect, 300));
+  </script>
 </head>
+
 <body>
-    <p>Đang chuyển hướng đến kho ứng dụng phù hợp...</p>
-    <p>Nếu không tự chuyển, vui lòng bấm vào đây:</p>
-    <!-- Link dự phòng cho người dùng bấm thủ công -->
-    <ul>
-        <li><a href="https://play.google.com/store/apps/details?id=com.goi.cua.ban">Tải trên Android</a></li>
-        <li><a href="https://apps.apple.com/vn/app/id123456789">Tải trên iOS</a></li>
-    </ul>
+  <p>Đang chuyển hướng đến kho ứng dụng phù hợp...</p>
+  <p>Nếu không tự chuyển, vui lòng bấm vào đây:</p>
+  <ul>
+    <li><a href="https://play.google.com/store/apps/details?id=com.kcgames.trauphuot&hl=vi">Tải trên Android</a></li>
+    <li><a href="https://apps.apple.com/vn/app/tr%C3%A2u-ph%C6%B0%E1%BB%A3t/id6755519358?l=vi">Tải trên iOS</a></li>
+  </ul>
 </body>
-<script>
-       import { inject } from '@vercel/analytics';
-    inject();
-</script>
-<script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
 </html>
